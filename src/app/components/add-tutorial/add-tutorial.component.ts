@@ -1,3 +1,5 @@
+import { Tutorial } from './../../models/tutorial.model';
+import { TutorialService } from './../../services/tutorial.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTutorialComponent implements OnInit {
 
-  constructor() { }
+  tutorial = new Tutorial();
+  submitted = false;
+
+  constructor(private tutorialService: TutorialService) { }
 
   ngOnInit(): void {
   }
 
+  newTutorial(){
+    this.submitted = false;
+    this.tutorial = new Tutorial();
+  }
+
+  saveTutorial(){
+    this.tutorialService.create(this.tutorial).then(() => {
+      this.submitted = true;
+    })
+  }
 }
