@@ -33,6 +33,4 @@ export class TutorialService {
   deleteAll():Promise<void>{
     return this.tutorialsRef.remove();
   }
-
-
 }
