@@ -13,13 +13,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
 import { TutorialDetailsComponent } from './components/tutorial-details/tutorial-details.component';
 import { TutorialListComponent } from './components/tutorial-list/tutorial-list.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTutorialComponent,
     TutorialDetailsComponent,
-    TutorialListComponent
+    TutorialListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
