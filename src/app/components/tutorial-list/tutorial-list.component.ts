@@ -2,6 +2,7 @@ import { TutorialService } from './../../services/tutorial.service';
 import { Component, OnInit } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { map } from 'rxjs/operators';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-tutorial-list',
   templateUrl: './tutorial-list.component.html',
@@ -9,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class TutorialListComponent implements OnInit {
 
-  tutorials?: Tutorial[];
+  tutorials: Tutorial[];
   currentTutorial?: Tutorial;
   currentIndex = 1;
   title = '';
@@ -47,4 +48,7 @@ export class TutorialListComponent implements OnInit {
     this.tutorialService.deleteAll().then(() => this.refreshList()).catch(err => console.log(err));
   }
 
+  drop(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.tutorials, event.previousIndex, event.currentIndex);
+  }
 }
